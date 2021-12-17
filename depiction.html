@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/scrollbooster@2/dist/scrollbooster.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script src="./assets/js/main.js" async></script>
+  <style>
+    .images {
+      max-width: 100%;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .scroll {
+      display: flex;
+      margin-right: 10px;
+    }
+
+    .img_card {
+      margin: 5px;
+      width: 100%;
+    }
+
+    .img_card>img {
+      border-radius: 10px;
+    }
+  </style>
+  <script>
+    function swap(hide, show) {
+      for (var i = document.querySelectorAll(hide).length - 1; i >= 0; i--) {
+        document.querySelectorAll(hide)[i].style.display = 'none';
+      }
+      for (var i = document.querySelectorAll(show).length - 1; i >= 0; i--) {
+        document.querySelectorAll(show)[i].style.display = 'block';
+      }
+      document.querySelector('.nav_btn' + show + '_btn').classList.add('active');
+      document.querySelector('.nav_btn' + hide + '_btn').classList.remove('active');
+    }
+  </script>
+  <title>Repository</title>
+</head>
+
+<body>
+  <div class="body" id="main">
+    <div class="swiper banner-swiper">
+      <div class="swiper-wrapper">
+        <div :style="{ backgroundImage: `url(${package.banner})` }" class="banner_underlay"></div>
+        <div :style="{ backgroundImage: `url(${package.banner})` }" class="banner_underlay"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="package package_head">
+      <img :src="package.icon">
+      <div class="package_info">
+        <h1 class="package_name">{{ package.name }}</h1>
+        <p class="package_caption">{{ package.author }}</p>
+      </div>
+    </div>
+    <div class="nav">
+      <div class="nav_btn active tweak_info_btn"
+        onclick="if (!window.__cfRLUnblockHandlers) return false; swap('.changelog','.tweak_info');"
+        data-cf-modified-ce82cc3c44c3e77c7113e6af-="">Details</div>
+      <div class="nav_btn changelog_btn"
+        onclick="if (!window.__cfRLUnblockHandlers) return false; swap('.tweak_info','.changelog');"
+        data-cf-modified-ce82cc3c44c3e77c7113e6af-="">Changelog</div>
+    </div>
+    <div class="tweak_info">
+      <div class="images">
+        <div class="scroll">
+          <div class="img_card" v-for="image in package.images" :key="image">
+            <img style="width: 250px;" :src="image">
+          </div>
+        </div>
+      </div>
+
+      <div class="md_view" :html="package.description"></div>
+
+      <h3>Information</h3>
+      <div class="table">
+        <div class="cell">
+          <div class="title">Developer</div>
+          <div class="text">Shuga</div>
+          <br><br>
+        </div>
+        <div class="cell">
+          <div class="title">Version</div>
+          <div class="text">1.1.0</div>
+          <br><br>
+        </div>
+        <div class="cell">
+          <div class="title">Compatibility</div>
+          <div class="text">iOS 8.0 to 10.4</div>
+          <br><br>
+        </div>
+        <div class="cell">
+          <div class="title">Section</div>
+          <div class="text">Themes</div>
+          <br><br>
+        </div>
+      </div>
+    </div>
+    <div class="changelog">
+      <div class="changelog_entry">
+        <h4>1.1.0</h4>
+        <div class="md_view">
+          <p>Minor bug fixes.</p>
+        </div>
+      </div>
+      <div class="changelog_entry">
+        <h4>1.0.0</h4>
+        <div class="md_view">
+          <p>Initial release.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  setTimeout(() => {
+    new ScrollBooster({
+      viewport: document.querySelector('.images'),
+      content: document.querySelector('.scroll'),
+      scrollMode: 'transform',
+      direction: 'horizontal',
+      emulateScroll: true,
+    });
+
+    new Swiper(".banner-swiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  }, 50);
+</script>
+
+</html>

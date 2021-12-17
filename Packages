@@ -1,0 +1,17 @@
+Package: com.henrikssonbrothers.zenith14fix
+Version: 0.0.4-2
+Architecture: iphoneos-arm
+Maintainer: Christoffer Wigforss
+Installed-Size: 152
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 14.0), com.muirey03.zenith
+Filename: ./deb/com.henrikssonbrothers.zenith14fix_0.0.4-2_iphoneos-arm.deb
+Size: 4064
+MD5sum: e6e21b7ccaee9af8f3e827983311093f
+SHA1: c2b10303dd8e660763cbebbfb055ceb727087887
+SHA256: 958771570b61b153a35342eda111a4db92bd50f2c2c664012ecff595d1579434
+Section: Tweaks
+Description: Make Zenith work on iOS 14
+Author: Christoffer Wigforss
+Depiction: /depiction?p=com.henrikssonbrothers.zenith14fix_0.0.4-2_iphoneos-arm.deb
+Name: Zenith iOS 14 Fix
+
